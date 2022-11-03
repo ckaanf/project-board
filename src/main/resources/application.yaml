@@ -14,6 +14,10 @@ spring:
     username: js
     password: skywlstn978
     driver-class-name: com.mysql.cj.jdbc.Driver
+#   test db
+#   url: jdbc:h2:mem:test
+#   username : sa
+#   driver-class-name: org.h2.Driver
 
   jpa:
     defer-datasource-initialization: true
