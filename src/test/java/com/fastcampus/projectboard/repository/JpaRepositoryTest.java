@@ -16,8 +16,8 @@ import static org.assertj.core.api.Assertions.*;
 @Import(JpaConfig.class)
 @DataJpaTest
 class JpaRepositoryTest {
-
     private final ArticleRepository articleRepository;
+
     private final ArticleCommentRepository articleCommentRepository;
 
     public JpaRepositoryTest(
@@ -30,7 +30,6 @@ class JpaRepositoryTest {
     @Test
     void givenTestData_whenSelecting_thenWorksFine(){
         //Given
-
         //When
         List<Article> articles = articleRepository.findAll();
 
@@ -45,7 +44,6 @@ class JpaRepositoryTest {
     void givenTestData_whenInserting_thenWorksFine(){
         //Given
         long previousCount = articleRepository.count();
-
 
         //When
         Article article = Article.of("new article","new content", "#spring");
@@ -80,7 +78,6 @@ class JpaRepositoryTest {
         long previousArticleCount = articleRepository.count();
         long previousArticleCommentCount =articleCommentRepository.count();
         int deletedCommentsSize = article.getArticleComments().size();
-
 
         //When
 
