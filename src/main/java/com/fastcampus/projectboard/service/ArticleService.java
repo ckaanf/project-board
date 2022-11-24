@@ -28,14 +28,14 @@ public class ArticleService {
         if (searchKeyword == null || searchKeyword.isBlank()){
             return articleRepository.findAll(pageable).map(ArticleDto::from);
         }
-        switch (searchType){
+        return switch (searchType){
             case TITLE -> articleRepository.findByTitleContaining(searchKeyword, pageable).map(ArticleDto::from); // switch가 스스로 리턴
             case CONTENT -> articleRepository.findByContentContaining(searchKeyword, pageable).map(ArticleDto::from); // switch가 스스로 리턴
             case ID -> articleRepository.findByUserAccount_UserIdContaining(searchKeyword, pageable).map(ArticleDto::from); // switch가 스스로 리턴
             case NICKNAME -> articleRepository.findByUserAccount_NicknameContaining(searchKeyword, pageable).map(ArticleDto::from); // switch가 스스로 리턴
             case HASHTAG -> articleRepository.findByHashtag("#" + searchKeyword, pageable).map(ArticleDto::from); // switch가 스스로 리턴
         };
-        return Page.empty();
+//        return Page.empty(); -> 검색 기능에서 계속 빈 페이지가 나왔던 이유
     }
     @Transactional(readOnly = true) //조회 구현
     public ArticleWithCommentsDto getArticle(Long articleId) {
