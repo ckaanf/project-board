@@ -1,5 +1,6 @@
 package com.fastcampus.projectboard.dto;
 
+import com.fastcampus.projectboard.domain.Article;
 import com.fastcampus.projectboard.domain.ArticleComment;
 
 import java.time.LocalDateTime;
@@ -31,6 +32,14 @@ public record ArticleCommentDto(
                 entity.getCreatedBy(),
                 entity.getModifiedAt(),
                 entity.getModifiedBy()
+        );
+    }
+
+    public ArticleComment toEntity(Article entity) {
+        return ArticleComment.of(
+                entity,
+                userAccountDto.toEntity(),
+                content
         );
     }
 }
