@@ -1,4 +1,4 @@
-package com.fastcampus.projectboard.response;
+package com.fastcampus.projectboard.dto.response;
 
 import com.fastcampus.projectboard.dto.ArticleDto;
 
